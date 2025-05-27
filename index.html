@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>소하중학교 다온학생회 양심우산</title>
+</head>
+<body>
+    <h1>소하중학교 다온학생회 양심우산</h1>
+
+    <h2>대여</h2>
+    <form method="post" action="/rent">
+        학번: <input type="text" name="student_id"><br>
+        이름: <input type="text" name="name"><br>
+        전화번호: <input type="text" name="phone"><br>
+        우산 번호 (1~40): <input type="number" name="umbrella_no" min="1" max="40"><br>
+        <button type="submit">대여하기</button>
+    </form>
+
+    <h2>반납</h2>
+    <form method="post" action="/return">
+        학번: <input type="text" name="student_id"><br>
+        이름: <input type="text" name="name"><br>
+        <button type="submit">반납하기</button>
+    </form>
+
+    <h2>현재 대여 목록 및 연체일수</h2>
+    <table border="1">
+        <tr>
+            <th>학번</th><th>이름</th><th>전화번호</th><th>우산번호</th><th>대여일자</th><th>연체일수</th>
+        </tr>
+        {% for row in data %}
+        <tr>
+            <td>{{ row.학번 }}</td>
+            <td>{{ row.이름 }}</td>
+            <td>{{ row.전화번호 }}</td>
+            <td>{{ row.우산번호 }}</td>
+            <td>{{ row.대여일자 }}</td>
+            <td>{{ row.연체일수 }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
